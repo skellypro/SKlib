@@ -1,0 +1,1 @@
+extern "C" int _fastcall getline(char*, const int;
