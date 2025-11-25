@@ -1,0 +1,45 @@
+#ifndef __FISR_CPP__
+#define __FISR_CPP__
+
+#include<cinttypes>
+
+#define THREEHALFS 1.5F
+#define WTF 0x5f3759df	// Named after the comment in the line that uses this number
+
+template<class T>
+T _fastcall fastInverseSqrt(T);
+
+extern "C" {
+    float _fastcall fisr(float n) {
+        return fastInverseSqrt(n);
+    }
+
+    double _fastcall fisr(double n) {
+        return fastInverseSqrt(n);
+    }
+}
+
+extern {
+    template<class T>
+    T _fastcall fisr(const T &n) {
+        return fastInverseSqrt(n);
+    }
+}
+
+template<class T = float>
+T _fastcall fastInverseSqrt(T n) {
+	long long i = 0;
+	T x, y;
+
+	x = n * 0.5F;
+	y = n;
+	i = *(reinterpret_cast<long long*>(&y));	// Genius approach for loading a float to a GPR(aka the evil floating point bit hack)
+	i = WTF - (i >> 1);							// shifting by 1 bit divides the number by 2
+	y = *(reinterpret_cast<T*>(&i));
+	y = y * (THREEHALFS - (x * y * y));			// Newton itteration
+	y = y * (THREEHALFS - (x * y * y));			// Second and third itterations can be ommitted for speed
+	//y = y * (THREEHALFS - (x * y * y));
+
+	return y;
+}
+#endif

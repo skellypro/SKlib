@@ -1,0 +1,8 @@
+#pragma once
+
+#include "fisr.h"
+
+extern {
+    template<class T>
+    T _fastcall fisr(const T &);
+}
