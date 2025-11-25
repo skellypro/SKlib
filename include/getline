@@ -1,1 +1,3 @@
+#pragma once
+#include "getline.h"
 extern int _fastcall getline(string&);
