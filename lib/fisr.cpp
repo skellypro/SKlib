@@ -1,11 +1,13 @@
 /*
- * fisr.h
+ * fisr.cpp
  * @Author: Sean Kelly
  * Description: Quake III's fast inverse square root function,
  * 32 bit, 64 bit, and generic versions
  * 
  * Reference:
  * https://www.youtube.com/watch?v=p8u_k2LIZyo
+ * 
+ * This file is safe to include.
  */
 #ifndef __FISR_CPP__
 #define __FISR_CPP__

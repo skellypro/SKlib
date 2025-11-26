@@ -1,2 +1,2 @@
 #pragma once
-extern "C" int _fastcall getline(char*, const int;
+extern "C" int _fastcall getline(char*, const int);
