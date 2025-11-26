@@ -6,13 +6,12 @@
  * Last Change: Nov 17, 2024
  */
 
-#include<math.h>
-#include<cmath>
+#include <cmath>
 
 using namespace std;
 
-#ifndef PI
-#define PI	3.1415926535897932384
+#ifndef M_PI
+#define M_PI	3.1415926535897932384
 #endif
 
 extern "C" {
