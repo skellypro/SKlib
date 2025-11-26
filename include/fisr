@@ -23,7 +23,5 @@
  * Quake III's algorithm, with expansions for 64 bit numbers,
  * and a generic version.
  */
-extern {
-    template<class T>
-    T _fastcall fisr(const T &);
-}
+template<class T>
+extern T fisr(const T &);

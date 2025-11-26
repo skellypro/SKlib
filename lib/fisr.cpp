@@ -18,27 +18,25 @@
 #define WTF 0x5f3759df	// Named after the comment in the line that uses this number
 
 template<class T>
-T _fastcall fastInverseSqrt(T);
+T fastInverseSqrt(T);
 
 extern "C" {
-    float _fastcall fisr(float n) {
+    float fisr(float n) {
         return fastInverseSqrt(n);
     }
 
-    double _fastcall fisr(double n) {
+    double fisr(double n) {
         return fastInverseSqrt(n);
     }
 }
 
-extern {
-    template<class T>
-    T _fastcall fisr(const T &n) {
-        return fastInverseSqrt(n);
-    }
+template<class T>
+T extern fisr(const T &n) {
+    return fastInverseSqrt(n);
 }
 
 template<class T = float>
-T _fastcall fastInverseSqrt(T n) {
+T fastInverseSqrt(T n) {
 	long long i = 0;
 	T x, y;
 

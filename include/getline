@@ -1,3 +1,4 @@
 #pragma once
+#include <string>
 #include "getline.h"
-extern int _fastcall getline(string&);
+extern int getline(string& line);

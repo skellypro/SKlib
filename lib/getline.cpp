@@ -7,7 +7,7 @@
 
 using namespace std;
 
-extern "C" int _fastcall getline(char* line, const int max) {
+extern "C" int getline(char *line, const int max) {
 	int i = 0;
 	for (i = 0; max > i && '\n' != (line[i] = getc(stdin)); i++);
 	if (i < max)
@@ -18,7 +18,7 @@ extern "C" int _fastcall getline(char* line, const int max) {
 	return i;
 }
 
-extern int _fastcall getline(string& line) {
+extern int getline(string &line) {
 	int i = 0;
 	for (i = 0;
 		'\n' != (line[i] = getc(stdin));

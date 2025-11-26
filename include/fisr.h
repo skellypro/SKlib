@@ -24,7 +24,6 @@
  * and a generic version.
  */
  extern "C"{
-    float _fastcall fisr(float);
-
-    double _fastcall fisr(double);
+    float fisr(float);
+    double fisr(double);
 }
