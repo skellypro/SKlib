@@ -10,10 +10,6 @@
 
 using namespace std;
 
-#ifndef M_PI
-#define M_PI	3.1415926535897932384
-#endif
-
 extern "C" {
 
 	//Trigonometric functions
@@ -56,25 +52,41 @@ extern "C" {
 	//Powers and Exponents
 	//!!!!!AVOID RECURSION TO PREVENT STACK OVERFLOWS!!!!!!
 	float pow (float base, float exponent) {
+		if(0.0 == exponent)
+			return 1;
+        bool negative = 0.0 > exponent;
+        exponent = negative ? -exponent : exponent;
 		float result = base;
 		while(--exponent)
 			result *= base;
+        if(negative)
+            result /= 1;
 		return result;
 	}
 
 	double pow (double base, double exponent) {
+		if(0.0 == exponent)
+			return 1;
+        bool negative = 0.0 > exponent;
+        exponent = negative ? -exponent : exponent;
 		double result = base;
 		while(--exponent)
 			result *= base;
+        if(negative)
+            result /= 1;
 		return result;
 	}
 
 	long double pow (long double base, long double exponent) {
-		if(!exponent)
+		if(0.0 == exponent)
 			return 1;
+        bool negative = 0.0 > exponent;
+        exponent = negative ? -exponent : exponent;
 		long double result = base;
 		while(--exponent)
 			result *= base;
+        if(negative)
+            result /= 1;
 		return result;
 	}
 

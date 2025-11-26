@@ -116,15 +116,20 @@ extern "C" {
 
 namespace skstdlib {
 	static long long int skstrtoll(const char* str, char** endptr, int base) {
-		register long double n = 0;
-		register size_t i = 0, sign = 0;
+		long double n = 0;
+		size_t i = 0, sign = 0;
 
-		for (register size_t stringlength = strlen(str);
+		for (size_t stringlength = strlen(str);
 			i < stringlength && (isspace(str[i]) && !isxdigit(str[i]));
 			i++);
 
+		if (str[i] == '-') {
+			sign++;
+            i++;
+		}
+
 		if (!base) {
-			for (register size_t top = i + 2; i < top; i++) {
+			for (size_t top = i + 2; i < top; i++) {
 				switch (str[i]) {
 				case '-':
 					sign++;
@@ -143,8 +148,13 @@ namespace skstdlib {
 					case 'X':
 						base = 16;
 						break;
-					case 'o':
-					case 'O':
+					case '1':
+					case '2':
+					case '3':
+					case '4':
+					case '5':
+					case '6':
+					case '7':
 						base = 8;
 						break;
 					default:
@@ -159,16 +169,11 @@ namespace skstdlib {
 				return 0;
 		}
 
-		while (isxdigit(str[i]) || str[i] == '-') {
-			if (str[i] == '-') {
-				sign++;
-			}
-			else {
-				register long double number = isalpha(str[i]) ? toupper(str[i]) - 0x37 : str[i] - 0x30;
-				if (number >= base && number < 0)
-					goto skstrtollEND;
-				n = (base * n) + number;
-			}
+		while (isxdigit(str[i])) {
+			long double number = isalpha(str[i]) ? toupper(str[i]) - 0x37 : str[i] - 0x30;
+			if (number >= base && number < 0)
+				goto skstrtollEND;
+			n = (base * n) + number;
 			i++;
 		}
 
@@ -183,16 +188,14 @@ namespace skstdlib {
 	}
 
 	static void roll() {
-		register clock_t c = clock();
-		nextRandNum = ((RAND_MAX + randNum) * 1103515245 + 12345) * (c * CLOCKS_PER_SEC);
+		clock_t c = clock();
+		nextRandNum = (randNum * 1103515245 + 12345) * (c * CLOCKS_PER_SEC);
 		randNum %= RAND_MAX;
 	}
 
 	static long long int skrand(void) {
 		roll();
-		register long long int a = randNum;
-		roll();
-		return (unsigned int)a;
+		return (unsigned int)randNum;
 	}
 
 	static void sksrand(unsigned long int seed) {
