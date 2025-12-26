@@ -17,24 +17,6 @@
 #define THREEHALFS 1.5F
 #define WTF 0x5f3759df	// Named after the comment in the line that uses this number
 
-template<class T>
-T fastInverseSqrt(T);
-
-extern "C" {
-    float fisr(float n) {
-        return fastInverseSqrt(n);
-    }
-
-    double fisr(double n) {
-        return fastInverseSqrt(n);
-    }
-}
-
-template<class T>
-T extern fisr(const T &n) {
-    return fastInverseSqrt(n);
-}
-
 template<class T = float>
 T fastInverseSqrt(T n) {
 	long long i = 0;
@@ -46,9 +28,43 @@ T fastInverseSqrt(T n) {
 	i = WTF - (i >> 1);							// shifting by 1 bit divides the number by 2
 	y = *(reinterpret_cast<T*>(&i));
 	y = y * (THREEHALFS - (x * y * y));			// Newton itteration
-	y = y * (THREEHALFS - (x * y * y));			// Second and third itterations can be ommitted for speed
-	//y = y * (THREEHALFS - (x * y * y));
-
+	
 	return y;
 }
+
+template<class T = float>
+T fastAccurateInverseSqrt(T n) {
+	T y = fastInverseSqrt(n);
+	y = y * (THREEHALFS - (x * y * y));			// Second Newton itteration for better approximation
+	return y;
+}
+
+extern "C" {
+    float fisr(float n) {
+        return fastInverseSqrt((float)n);
+    }
+
+    double fisr(double n) {
+        return fastInverseSqrt((float)n);
+    }
+
+	float faisr(float n){
+		return fastAccurateInverseSqrt((float)n);
+	}
+
+	double faisr(double n) {
+		return fastAccurateInverseSqrt((double)n);
+	}
+}
+
+template<class T>
+extern T fisr(const T &n) {
+    return fastInverseSqrt(dynamic_cast<T>n);
+}
+
+template<class T>
+extern T faisr(const T &n) {
+	return fastAccurateInverseSqrt(dynamic_cast<T>n);
+}
+
 #endif

@@ -26,4 +26,7 @@
  extern "C"{
     float fisr(float);
     double fisr(double);
+    
+	float faisr(float n);
+	double faisr(double n);
 }

@@ -54,7 +54,7 @@ extern "C" {
 	float pow (float base, float exponent) {
 		if(0.0 == exponent)
 			return 1;
-        bool negative = 0.0 > exponent;
+        bool negative = 0.0 < -exponent;
         exponent = negative ? -exponent : exponent;
 		float result = base;
 		while(--exponent)
@@ -67,7 +67,7 @@ extern "C" {
 	double pow (double base, double exponent) {
 		if(0.0 == exponent)
 			return 1;
-        bool negative = 0.0 > exponent;
+        bool negative = 0.0 < -exponent;
         exponent = negative ? -exponent : exponent;
 		double result = base;
 		while(--exponent)
@@ -80,7 +80,7 @@ extern "C" {
 	long double pow (long double base, long double exponent) {
 		if(0.0 == exponent)
 			return 1;
-        bool negative = 0.0 > exponent;
+        bool negative = 0.0 < -exponent;
         exponent = negative ? -exponent : exponent;
 		long double result = base;
 		while(--exponent)
@@ -104,15 +104,15 @@ extern "C" {
 	}
 
 	float abs(float x) {
-		return fabs(x);
+		return x < 0 ? -x : x;
 	}
 
 	double abs(double x) {
-		return fabs(x);
+		return x < 0 ? -x : x;
 	}
 
 	long double abs(long double x) {
-		return fabs(x);
+		return x < 0 ? -x : x;
 	}
 
 	float fma (float x, float y, float z) {
@@ -126,11 +126,5 @@ extern "C" {
 	long double fma (long double x, long double y, long double z) {
 		return x * y + z;
 	}
-	/*
-	template<class Type1, class Type2, class Type3>
-	double fma (Type1 x      , Type2 y      , Type3 z) {
-		return x * y + z;
-	}
-	*/
 
 }

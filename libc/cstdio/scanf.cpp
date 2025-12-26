@@ -8,3 +8,12 @@
 #include<stdarg.h>
 #include<stdio.h>
 
+extern "C" {
+    int scanf(const char * format, ...) {
+        return 0;
+    }
+
+    int fscanf(FILE * buffer, const char * format, ...) {
+        return 0;
+    }
+}

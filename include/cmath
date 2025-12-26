@@ -1,2 +1,20 @@
 #pragma once
+
+template<class Type1, class Type2, class Type3>
+constexpr double fma (Type1 x, Type2 y, Type3 z) {
+	return x * y + z;
+}
+
+template<class Type1, class Type2>
+constexpr double pow(Type1 base, Type2 exponent) {
+	if(0.0 == exponent)
+		return 1;
+    bool negative = 0.0 < -exponent;
+	double result = base;
+    if(negative)
+        return 1 / ( base * pow(base, (-exponent)-1));
+    else
+        return base * pow(dynamic_cast<Type1>base, dynamic_cast<Type2>exponent-1.0);
+}
+
 #include "math.h"
