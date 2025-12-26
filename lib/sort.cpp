@@ -54,7 +54,7 @@ extern "C" {
     }
 }
 template<class T>
-void recursiveBubbleSort(T *arr, size_t n) {
+extern void recursiveBubbleSort(T *arr, size_t n) {
     // Base case: if the size is 1 or 0, return
     if(1 < n){
         // Perform one pass of bubble sort and reduce the size for the next recursive call

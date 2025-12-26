@@ -2,4 +2,4 @@
 #include "sort.h"
 
 template<class T>
-void recursiveBubbleSort(T *arr, size_t n);
+extern void recursiveBubbleSort(T *arr, size_t n);
