@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include <sort>
+
 extern "C" {
     void recursiveBubbleSort(long long *arr, size_t n) {
         // Base case: if the size is 1 or 0, return
@@ -53,6 +53,11 @@ extern "C" {
         }
     }
 }
+/*
+ * Making this a constexpr would make it faster,
+ * however the traditional approach will reduce
+ * bloat.
+ */
 template<class T>
 extern void recursiveBubbleSort(T *arr, size_t n) {
     // Base case: if the size is 1 or 0, return
