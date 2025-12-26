@@ -8,4 +8,4 @@ extern "C" {
     void recursiveBubbleSort(int *arr, size_t n);
 }
 template<class T>
-void recursiveBubbleSort(T *arr, size_t n)
+void recursiveBubbleSort(T *arr, size_t n);
