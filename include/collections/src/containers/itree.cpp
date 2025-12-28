@@ -4,8 +4,8 @@
  *  Created on: Dec 26, 2015
  *      Author: Sean
  */
-#ifndef ITREE_CPP_
-#define ITREE_CPP_
+#pragma once
+
 #include"includes/itree.h"
 namespace sktech {
 template<class T, class K = unsigned long int>
@@ -46,4 +46,3 @@ template<class T, class K = unsigned long int>
 		return *current;
 	}
 }
-#endif

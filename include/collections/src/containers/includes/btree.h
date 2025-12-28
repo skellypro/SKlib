@@ -4,10 +4,10 @@
  *  Created on: Dec 24, 2015
  *      Author: Sean
  */
-#ifndef BTREE_H_
-#define BTREE_H_
+#pragma once
+
 #include"abstracts/basic_tree.cpp"
-namespace sktech {
+namespace std {
 	template<class T, class K = unsigned long int>
 	class btree : public basic_tree<T,K> {
 	public:
@@ -21,4 +21,3 @@ namespace sktech {
 		branch<T,K> &climb(const branch *&nextBranch, const K &_key);
 	};
 }
-#endif /* BTREE_H_ */

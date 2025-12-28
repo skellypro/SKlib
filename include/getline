@@ -1,4 +1,5 @@
 #pragma once
+
 #include <string>
 #include "getline.h"
-extern int getline(string& line);
+extern int getline(std::string& line);

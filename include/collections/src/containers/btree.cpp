@@ -4,8 +4,8 @@
  *  Created on: Dec 24, 2015
  *      Author: Sean
  */
-#ifndef BTREE_CPP_
-#define BTREE_CPP_
+#pragma once
+
 #include"includes/btree.h"
 namespace sktech {
 template<class T, class K = unsigned long int>
@@ -44,4 +44,3 @@ template<class T, class K = unsigned long int>
 			return climb(nextBranch->leftP, _key);
 	}
 }
-#endif

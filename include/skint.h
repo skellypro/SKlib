@@ -5,8 +5,8 @@
  *      Author: sean
  */
 
-#ifndef SKINT_H_
-#define SKINT_H_
+#pragma once
+
 
 namespace sk {
 	#include<stdint.h>
@@ -41,4 +41,3 @@ namespace sk {
 	typedef int_fast64_t fast64;
 	typedef uint_fast64_t ufast64;
 }
-#endif /* SKINT_H_ */

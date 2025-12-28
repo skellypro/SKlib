@@ -5,7 +5,6 @@
  *      Author: Sean
  */
 
-#ifndef SKHASHTABLE_H_
-#define SKHASHTABLE_H_
+#pragma once
+
 #include"src/hashtable.h"
-#endif /* SKHASHTABLE_H_ */

@@ -2,87 +2,87 @@
  * @author: Sean Kelly
  * TODO: overload function resize() to take additional arguments
  */
-#ifndef RCHAIN_CPP_
-#define RCHAIN_CPP_
-#include"includes/rchain.h"
-namespace sktech {
+#pragma once
+
+#include"includes/rlist.h"
+namespace std {
 	template<class T>
-	rchain<T>::rchain() {
-		basic_chain<T>::basic_chain();
+	rlist<T>::rlist() {
+		basic_list<T>::basic_list();
 	}
 	template<class T>
-	rchain<T>::rchain(unsigned long int new_size) {
-		basic_chain<T>::basic_chain();
+	rlist<T>::rlist(unsigned long int new_size) {
+		basic_list<T>::basic_list();
 		grow(new_size);
 	}
 	template<class T>
-	rchain<T>::rchain(unsigned long int new_size, ...) {
-		basic_chain<T>::basic_chain();
-		va_list newChain;
-		va_start(newChain, new_size);
-		varAdd(newChain, new_size);
-		va_end(newChain);
+	rlist<T>::rlist(unsigned long int new_size, ...) {
+		basic_list<T>::basic_list();
+		va_list newList;
+		va_start(newList, new_size);
+		varAdd(newList, new_size);
+		va_end(newList);
 	}
 	template<class T>
-	rchain<T>::rchain(const basic_chain<T> &otherChain) {
-		basic_chain<T>::basic_chain();
-		copy(otherChain);
+	rlist<T>::rlist(const basic_list<T> &otherList) {
+		basic_list<T>::basic_list();
+		copy(otherList);
 	}
 	template<class T>
-	rchain<T>::~rchain() {
+	rlist<T>::~rlist() {
 		clear();
 	}
 	template<class T>
-	void rchain<T>::copy(const basic_chain<T> &otherChain) {
+	void rlist<T>::copy(const basic_list<T> &otherList) {
 		if(!empty)
 			clear();
-		grow(otherChain._size, otherChain);
+		grow(otherList._size, otherList);
 	}
 	template<class T>
-	void rchain<T>::clear() {
+	void rlist<T>::clear() {
 		if(empty())
 			_max = 0;
 		else {
-			basic_chain<T>::pop_front();
+			basic_list<T>::pop_front();
 			clear();
 		}
 	}
 	template<class T>
-	void rchain<T>::resize(unsigned long int newSize) {
+	void rlist<T>::resize(unsigned long int newSize) {
 		if(_max < newSize)
 			_max = newSize;
 			grow(newSize - _size);
 	}
 	// TODO: fix these functions.
 	template<class T>
-	void rchain<T>::resize(unsigned long int args, ...) {
+	void rlist<T>::resize(unsigned long int args, ...) {
 		va_list newVals;
 		va_start(newVals, args);
 		varAdd(newVals, args + _size, _size - 1);
 		va_end();
 	}
 	template<class T>
-	void rchain<T>::push_front(unsigned long int args, ...) {
+	void rlist<T>::push_front(unsigned long int args, ...) {
 		va_list newVals;
 		va_start(newVals, args);
 		varAddFront(newVals, args);
 		va_end();
 	}
 	template<class T>
-	void rchain<T>::push_back(unsigned long int args, ...) {
+	void rlist<T>::push_back(unsigned long int args, ...) {
 		va_list newVals;
 		va_start(newVals, args);
 		varAddBack(newVals, args);
 		va_end();
 	}
 	template<class T>
-	basic_chain<T> &rchain<T>::operator=(const basic_chain<T> &otherChain) {
-		if(this != *otherChain)
-			copy(otherChain);
+	basic_list<T> &rlist<T>::operator=(const basic_list<T> &otherList) {
+		if(this != *otherList)
+			copy(otherList);
 		return *this;
 	}
 	template<class T>
-	T &rchain<T>::operator[](unsigned long int n) {
+	T &rlist<T>::operator[](unsigned long int n) {
 		if(n > _size)
 			throw n;
 		if(n > _size / 2)
@@ -90,21 +90,21 @@ namespace sktech {
 		return right(firstP, 0, n);
 	}
 	template<class T>
-	bool rchain<T>::grow(unsigned long int size,
-			const basic_chain<T> &otherChain = NULL) {
+	bool rlist<T>::grow(unsigned long int size,
+			const basic_list<T> &otherList = NULL) {
 		if(full())
 			return false;
 		if(_size != size) {
-			if(&otherChain == NULL)
+			if(&otherList == NULL)
 				push_back(T());
 			else
-				push_back(otherChain[_size + 1]);
-			return grow(size, otherChain);
+				push_back(otherList[_size + 1]);
+			return grow(size, otherList);
 		}
 		return true;
 	}
 	template<class T>
-	T &rchain<T>::left(node<T> *nextNode,
+	T &rlist<T>::left(node<T> *nextNode,
 			unsigned long int i,
 			unsigned long int index) {
 		if(i == index)
@@ -112,7 +112,7 @@ namespace sktech {
 		return left(nextNode->leftP, i - 1, index);
 	}
 	template<class T>
-	T &rchain<T>::right(node<T> *nextNode,
+	T &rlist<T>::right(node<T> *nextNode,
 			unsigned long int i,
 			unsigned long int index) {
 		if(i == index)
@@ -120,32 +120,31 @@ namespace sktech {
 		return right(nextNode->rightP, i + 1, index);
 	}
 	template<class T>
-	bool rchain<T>::varAdd(va_list &newChain,
+	bool rlist<T>::varAdd(va_list &newList,
 			unsigned long int new_size,
 			unsigned long int index = 0) {
 		if(index == new_size)
 			return true;
-		push_back(va_arg(newChain,T));
-		return varAdd(newChain, new_size, index + 1);
+		push_back(va_arg(newList,T));
+		return varAdd(newList, new_size, index + 1);
 	}
 	//TODO: fix this
 	template<class T>
-	bool rchain<T>::varAddFront(va_list &newChain,
+	bool rlist<T>::varAddFront(va_list &newList,
 			unsigned long int args,
 			unsigned long int index = 0) {
 		if(args == index)
 			return true;
-		push_front(va_arg(newChain, T));
-		return varAdd(newChain, args, index + 1);
+		push_front(va_arg(newList, T));
+		return varAdd(newList, args, index + 1);
 	}
 	template<class T>
-	bool rchain<T>::varAddBack(va_list &newChain,
+	bool rlist<T>::varAddBack(va_list &newList,
 			unsigned long int args,
 			unsigned long int index = 0) {
 		if(args == index)
 			return true;
-		push_back(va_arg(newChain, T));
-		return varAdd(newChain, args, index + 1);
+		push_back(va_arg(newList, T));
+		return varAdd(newList, args, index + 1);
 	}
 }
-#endif

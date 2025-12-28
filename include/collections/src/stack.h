@@ -4,10 +4,10 @@
  *  Created on: Jan 12, 2016
  *      Author: Sean
  */
-#ifndef SRC_STACK_H_
-#define SRC_STACK_H_
+#pragma once
+
 #include"containers/array.cpp"
-namespace sktech {
+namespace std {
 	template<class T, class C = array<T>>
 	class stack {
 	public:
@@ -54,4 +54,3 @@ namespace sktech {
 
 	}
 }
-#endif /* SRC_STACK_H_ */

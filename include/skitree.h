@@ -5,7 +5,6 @@
  *      Author: Sean
  */
 
-#ifndef SKITREE_H_
-#define SKITREE_H_
+#pragma once
+
 #include"src/containers/itree.cpp"
-#endif /* SKITREE_H_ */

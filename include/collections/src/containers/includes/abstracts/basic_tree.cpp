@@ -4,10 +4,10 @@
  *  Created on: Dec 19, 2015
  *      Author: Sean
  */
-#ifndef BASIC_TREE_CPP_
-#define BASIC_TREE_CPP_
+#pragma once
+
 #include"interfaces/basic_tree.h"
-namespace sktech {
+namespace std {
 	template<class T, class K = unsigned long int>
 	basic_tree<T,K>::basic_tree()
 	: root(NULL), _size(0) {}
@@ -120,4 +120,3 @@ namespace sktech {
 		return val > otherBranch.val;
 	}
 }
-#endif

@@ -4,10 +4,10 @@
  *  Created on: Dec 28, 2015
  *      Author: Sean
  */
-#ifndef SK_ARRAY_CPP_
-#define SK_ARRAY_CPP_
+#pragma once
+
 #include "includes/array.h"
-namespace sktech {
+namespace std {
 	template<class T>
 	array<T>::array()
 	: vals(NULL),
@@ -38,7 +38,7 @@ namespace sktech {
 		clear();
 	}
 	template<class T>
-	array<T>::array &operator=(const array<T> &otherArray) {
+	array<T> & array<T>::operator=(const array<T> &otherArray) {
 		if(this != *otherArray) {
 			copy(otherArray);
 		}
@@ -130,4 +130,3 @@ namespace sktech {
 		return vals[_back];
 	}
 }
-#endif

@@ -6,10 +6,10 @@
  *      TODO: Because the difference between derived classes is search(K),
  *      	move other functions to abstract class to remove redundant code.
  */
-#ifndef BASIC_TREE_H_
-#define BASIC_TREE_H_
+#pragma once
+
 #include"node.cpp"
-namespace sktech {
+namespace std {
 	template<class T, class K = unsigned long int>
 	class basic_tree {
 	public:
@@ -43,4 +43,3 @@ namespace sktech {
 		virtual unsigned long int _size;
 	};
 }
-#endif /* BASIC_TREE_H_ */

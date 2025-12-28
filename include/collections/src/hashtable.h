@@ -5,11 +5,10 @@
  *      Author: Sean
  */
 
-#ifndef SRC_HASHTABLE_H_
-#define SRC_HASHTABLE_H_
-#include"containers/chain.cpp"
-template<class T, class C = chain<T>>
+#pragma once
+
+#include"containers/list.cpp"
+template<class T, class C = list<T>>
 class hash_table {
 
 };
-#endif /* SRC_HASHTABLE_H_ */

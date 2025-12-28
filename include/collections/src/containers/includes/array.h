@@ -4,13 +4,13 @@
  *  Created on: Dec 28, 2015
  *      Author: Sean
  */
+#pragma once
+
 #ifndef NULL
 #define NULL 0
 #endif
-#ifndef SK_ARRAY_H_
-#define SK_ARRAY_H_
 #include<cstdarg>
-namespace sktech {
+namespace std {
 	template<class T>
 	class array {
 	public:
@@ -39,4 +39,3 @@ namespace sktech {
 		unsigned long int _size, _max, _front, _back;
 	};
 }
-#endif /* SK_ARRAY_H_ */

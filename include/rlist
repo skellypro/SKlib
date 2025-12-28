@@ -1,5 +1,5 @@
 /*
- * skarray.h
+ * skrchain.h
  *
  *  Created on: Jan 6, 2016
  *      Author: Sean
@@ -7,4 +7,4 @@
 
 #pragma once
 
-#include"src/containers/array.cpp"
+#include"src/containers/rlist.cpp"

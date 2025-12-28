@@ -5,7 +5,6 @@
  *      Author: Sean
  */
 
-#ifndef SKBTREE_H_
-#define SKBTREE_H_
+#pragma once
+
 #include"src/containers/btree.cpp"
-#endif /* SKBTREE_H_ */

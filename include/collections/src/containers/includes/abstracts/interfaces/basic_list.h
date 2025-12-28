@@ -6,20 +6,20 @@
  *      description: abstract class for chain and rchain
  */
 
-#ifndef BASIC_CHAIN_H_
-#define BASIC_CHAIN_H_
+#pragma once
+
 #include"node.cpp"
 #include<cstdarg>
-namespace sktech {
+namespace std {
 	template<class T>
-	class basic_chain {
+	class basic_list {
 	public:
-		virtual basic_chain();
-		virtual ~basic_chain() = 0;
-		virtual basic_chain operator=(const basic_chain &otherChain) = 0;
+		virtual basic_list();
+		virtual ~basic_list() = 0;
+		virtual basic_list operator=(const basic_list &otherList) = 0;
 		virtual T &operator[](unsigned long int n) = 0;
 		virtual void clear() = 0;
-		virtual void copy(const basic_chain &otherChain) = 0;
+		virtual void copy(const basic_list &otherList) = 0;
 		virtual void sort() = 0;
 		virtual void push_back(const T &newVal)const;
 		virtual void push_front(const T &newVal)const;
@@ -40,4 +40,3 @@ namespace sktech {
 	private:
 	};
 }
-#endif /* BASIC_CHAIN_H_ */

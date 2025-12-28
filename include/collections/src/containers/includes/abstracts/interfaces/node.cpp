@@ -1,10 +1,10 @@
 /*
  * @author: Sean Kelly
  */
-#ifndef NODE_CPP_
-#define NODE_CPP_
+#pragma once
+
 #include"node.h"
-namespace sktech{
+namespace std {
 	template<class T>
 	node<T>::node():leftP(NULL), rightP(NULL), val(NULL){}
 	template<class T>
@@ -31,4 +31,3 @@ namespace sktech{
 		return *this;
 	}
 }
-#endif

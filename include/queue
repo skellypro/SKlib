@@ -1,0 +1,9 @@
+/*
+ * skqueue.h
+ *
+ *  Created on: Jan 16, 2016
+ *      Author: Sean
+ */
+#pragma once
+
+#include"src/queue.h"

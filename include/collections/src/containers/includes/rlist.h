@@ -2,39 +2,40 @@
  * Name:	Sean
  * TODO: overload function resize() to take additional arguments
  */
-#ifndef RCHAIN_H_
-#define RCHAIN_H_
-#include"abstracts/basic_chain.cpp"
-namespace sktech{
+#pragma once
+
+#include"abstracts/basic_list.cpp"
+namespace std{
 	template<class T>
-	class rchain : private basic_chain<T> {
+	class rlist: private basic_list<T> {
 	public:
-		rchain();
-		rchain(unsigned long int new_size);
-		rchain(unsigned long int new_size, ...);
-		rchain(const basic_chain<T> &otherChain);
+		rlist();
+		rlist(unsigned long int new_size);
+		rlist(unsigned long int new_size, ...);
+		rlist(const basic_list<T> &otherList);
 		virtual ~rchain();
-		void copy(const basic_chain<T> &otherChain);
+		void copy(const basic_list<T> &otherList);
 		void sort();
 		void clear();
 		void resize(unsigned long int newSize);
 		void resize(unsigned long int args, ...);
 		void push_front(unsigned long int args, ...);
 		void push_back(unsigned long int args, ...);
-		basic_chain<T> &operator=(const basic_chain<T> &otherChain);
+		basic_list<T> &operator=(const basic_list<T> &otherList);
 		T &operator[](unsigned long int n);
+		~rlist();
 	private:
 		bool grow(unsigned long int size,
-				const basic_chain<T> &otherChain = NULL);
+				const basic_list<T> &otherList = NULL);
 		T &left(node<T> *nextNode, unsigned long int i,
 				unsigned long int index);
 		T &right(node<T> *nextNode, unsigned long int i,
 				unsigned long int index);
-		bool varAdd(va_list &newChain, unsigned long int new_size,
+		bool varAdd(va_list &newList, unsigned long int new_size,
 				unsigned long int index = 0);
-		bool varAddFront(va_list &newChain, unsigned long int args,
+		bool varAddFront(va_list &newList, unsigned long int args,
 						unsigned long int index = 0);
-		bool varAddBack(va_list &newChain, unsigned long int args,
+		bool varAddBack(va_list &newList, unsigned long int args,
 					unsigned long int index = 0);
 	};
 }

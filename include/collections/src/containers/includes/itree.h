@@ -5,10 +5,10 @@
  *      Author: Sean
  *      Description:	Binary search tree with an iterated search algorithm
  */
-#ifndef ITREE_H_
-#define ITREE_H_
+#pragma once
+
 #include"abstracts/basic_tree.cpp"
-namespace sktech {
+namespace std {
 	template<class T, class K = unsigned long int>
 	class itree : public basic_tree<T,K> {
 	public:
@@ -22,4 +22,3 @@ namespace sktech {
 		branch<T,K> &climb(const K &_key);
 	};
 }
-#endif /* ITREE_H_ */

@@ -4,8 +4,8 @@
  *  Created on: Feb 11, 2015
  *      Author: Sean
  */
-#ifndef NODE_H_
-#define NODE_H_
+#pragma once
+
 #ifndef NULL
 #define NULL 0
 #endif
@@ -15,7 +15,7 @@
 #ifndef false
 #define false 0b0
 #endif
-namespace sktech{
+namespace std{
 	template<class T>
 	struct node {
 		node();
@@ -28,4 +28,3 @@ namespace sktech{
 		virtual T *val;
 	};
 }
-#endif /* NODE_H_ */

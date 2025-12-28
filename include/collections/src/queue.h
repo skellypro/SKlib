@@ -4,10 +4,10 @@
  *  Created on: Jan 14, 2016
  *      Author: Sean
  */
-#ifndef SRC_QUEUE_H_
-#define SRC_QUEUE_H_
+#pragma once
+
 #include"containers/array.cpp"
-namespace sktech {
+namespace std {
 	template<class T, class C = array<T>>
 	class queue {
 	public:
@@ -53,4 +53,3 @@ namespace sktech {
 		values = new C(otherqueue);
 	}
 }
-#endif /* SRC_QUEUE_H_ */

@@ -8,8 +8,8 @@
  * Description:	Describe longfastints.h here
  */
 
-#ifndef INCLUDE_LONGFASTINTS_H_
-#define INCLUDE_LONGFASTINTS_H_
+#pragma once
+
 
 union alignas(16) uint128_split_t___ {
 	unsigned : 128;
@@ -26,5 +26,3 @@ union alignas(16) uint128_split_t___ {
 		unsigned : 8, : 8, : 8, : 8, : 8, : 8, : 8, : 8, : 8, : 8, : 8, : 8, : 8, : 8, : 8, : 8;
 	};
 };
-
-#endif /* INCLUDE_LONGFASTINTS_H_ */
