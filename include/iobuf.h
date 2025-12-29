@@ -57,4 +57,4 @@ int _flushbuf(int, FILE *);
 ? *(p)->_ptr++ = (x) : _flushbuf((x),p))
 
 #define getchar() getc(stdin)
-#define putcher(x) putc((x), stdout)
+#define putchar(x) putc((x), stdout)
