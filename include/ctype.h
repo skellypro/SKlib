@@ -10,34 +10,35 @@
 
 #pragma once
 
-#define isalnum(c) (return isdigit(c) || isalpha(c))
+#define isalnum(c) (isdigit(c) || isalpha(c))
 
-#define isalpha(c) (return isupper(c) || islower(c))
+#define isalpha(c) (isupper(c) || islower(c))
 
-#define isblank(c) (return c == 0x09 || c == 0x20)
+#define isblank(c) (0x09 == c || 0x20 == c)
 
-#define iscntrl(c) (return (c >= 0x00 && c <= 0x1F) || c == 0x7F)
+#define iscntrl(c) ((0x00 <= c && 0x1F >= c) || 0x7F == c)
 
-#define isdigit(c) (return c >= 0x30 && c <= 0x39)
+#define isdigit(c) (0x30 <= c && 0x39 >= c)
 
-#define isgraph(c) (return isalnum(c) || ispunct(c))
+#define isgraph(c) (isalnum(c) || ispunct(c))
 
-#define islower(c) (return c >= 0x61 && c <= 0x7A)
+#define islower(c) (0x61 <= c && 0x7A >= c)
 
-#define isprint(c) (return c == 0x20 || isgraph(c))
+#define isprint(c) (0x20 == c || isgraph(c))
 
-#define ispunct(c) (return (c >= 0x21 && c <= 0x2F) || \
-	(c >= 0x3A && c <= 0x40) || \
-	(c >= 0x5B && c <= 0x60) || (c >= 0x7B && c <= 0x7E))
+#define ispunct(c) (( 0x21 <= c && 0x2F >= c) || \
+	(0x3A <= c && 0x40 >= c) || \
+	(0x5B <= c && 0x60 >= c) || \
+	(0x7B <= c && 0x7E >= c))
 
-#define isspace(c) (return (c >= 0x09 && c<= 0x0D) || c == 0x20)
+#define isspace(c) ((0x09 <= c && 0x0D >= c) || 0x20 == c)
 
-#define isupper(c) (return c >= 0x41 && c <= 0x5A)
+#define isupper(c) (0x41 <= c && 0x5A <= c)
 
-#define isxdigit(c) (return isdigit(c) || \
-	(c >= 0x41 && c <= 0x46) || \
-	(c >= 0x61 && c <= 0x66))
+#define isxdigit(c) (isdigit(c) || \
+	(0x41 <= c && 0x46 >= c) || \
+	(0x61 <= c && 0x66 >=  c))
 
-#define tolower(c) (return isupper(c) ? c - 0x20 : c)
+#define tolower(c) (isupper(c) ? c - 0x20 : c)
 
-#define toupper(c) (return islower(c) ? c + 0x20 : c)
+#define toupper(c) (islower(c) ? c + 0x20 : c)

@@ -27,7 +27,7 @@ typedef struct _iobuf {
 	int _charbuf;		// character buffer
 	int _bufsiz;		// buffer size
 	char* _tmpfname;	// temporary file name
-}FILE;
+} FILE;
 
 enum _flags {
 	_READ = _IOREAD, /* file open for reading */
@@ -46,17 +46,17 @@ extern "C" FILE _iob[FOPEN_MAX];
 int _fillbuf(FILE *);
 int _flushbuf(int, FILE *);
 
-#define feof(p) ((p)->_flag & _EOF) != 0)
-#define ferror(p) ((p)->_flag & _ERR) != 0)
-#define fileno(p) ((p)->file)
+#define feof(p) (((p)->_flag & _EOF) != 0)
+#define ferror(p) (((p)->_flag & _ERR) != 0)
+#define fileno(p) ((p)->_file)
 
-#define getc(p) (--(p)->_cnt >= 0 \
-? (unsigned char) *(p)->_ptr++ : _fillbuf(p))
+#define getc(p) (0 <= (--(p)->_cnt) ?\
+	(unsigned char) *(p)->_ptr++ : _fillbuf(p))
 
 #define fgetc(p) getc(p)
 
-#define putc(x,p) (--(p)->_cnt >= 0 \
-? *(p)->_ptr++ = (x) : _flushbuf((x),p))
+#define putc(x,p) (0 <= (--(p)->_cnt) ?\
+	*(p)->_ptr++ = (x) : _flushbuf((x),p))
 
 #define fputc(x,p) putc((x), p)
 

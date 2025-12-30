@@ -12,13 +12,21 @@
 #include <iobuf.h>
 
 extern "C"{
+	int fputs(const char * str, FILE * stream) {
+		return localFputs(str, stream);
+	}
+
+	int puts(const char * str) {
+		int written = localFputs(str);
+		
+	}
+
 	int printf(const char* format, ...)
 	{
 		va_list args;
 		va_start(args, format);
 		int ret = localvfprintf(stdout, format, args);
 		va_end(args);
-		//fflush(stdout);
 		return ret;
 	}
 	
@@ -27,7 +35,6 @@ extern "C"{
 		va_start(args, format);
 		int ret = localvfprintf(buffer, format, args);
 		va_end(args);
-		//fflush(buffer);
 		return ret;
 	}
 

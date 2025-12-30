@@ -45,8 +45,12 @@ int getBase(char formatc){
 	}
 }
 
+int localPuts(const char * str, FILE * buffer = stdin) {
+	int i = localPrintString(buffer, str);
+	return i ;
+}
+
 int localvfprintf(FILE* buffer, const char* format, va_list args) {
-	// Simple implementation using fwrite
 	int base, written = 0;
 	char numBuffer[65];
 
@@ -55,7 +59,10 @@ int localvfprintf(FILE* buffer, const char* format, va_list args) {
 		case '%':
 			i++;
 			switch (format[i]) {
-				// TODO: what if there is a number between % and the format specifier?
+				// TODO: implement format flag specifiers
+				// TODO: implement format width specifiers
+				// TODO: precision is implemented in the ToString function, get it to work here
+				// TODO: implement format length specifiers
 			case 'd':
 			case 'i':
 				integerToString((int)va_arg(args, int), numBuffer);

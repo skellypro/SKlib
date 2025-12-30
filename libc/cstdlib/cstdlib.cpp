@@ -6,15 +6,14 @@
  * Last Change:	Apr 28, 2025
  */
 
-#include<stdlib.h>
 #include<cstdlib>
-#include<stdint.h>
-#include<stddef.h>
-#include<ctype.h>
-#include<string.h>
-#include<math.h>
-#include<float.h>
-#include<time.h>
+#include<cstdint>
+#include<cstddef>
+#include<cctype>
+#include<cstring>
+#include<cmath>
+#include<cfloat>
+#include<ctime>
 
 using namespace std;
 
@@ -76,19 +75,11 @@ extern "C" {
 		return ((lldiv_t)(numer / denom));
 	}
 
-	int rand() {
-		return (int)skrand();
-	}
-
-	long int rand(void) {
-		return (long int)skrand();
-	}
-
-	long long int rand (void) {
+	int rand (void) {
 		return skrand();
 	}
 
-	void srand(unsigned int seed) {
+	void srand(unsigned long int seed) {
 		return sksrand(seed);
 	}
 
