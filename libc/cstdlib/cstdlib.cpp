@@ -56,23 +56,23 @@ extern "C" {
 	}
 
 	div_t div(int numer, int denom) {
-		return ((div_t)(numer / denom));
+		return {(numer / denom), (numer % denom)};
 	}
 
 	ldiv_t div(long int numer, long int denom) {
-		return ldiv(numer, denom);
+		return {(numer / denom), (numer % denom)};
 	}
 
 	lldiv_t div(long long int numer, long long int denom) {
-		return lldiv(numer, denom);
+		return {(numer / denom), (numer % denom)};
 	}
 
 	ldiv_t ldiv(long int numer, long int denom) {
-		return ((ldiv_t)(numer / denom));
+		return {(numer / denom), (numer % denom)};
 	}
-
+	
 	lldiv_t lldiv(long long int numer, long long int denom) {
-		return ((lldiv_t)(numer / denom));
+		return {(numer / denom), (numer % denom)};
 	}
 
 	int rand (void) {
