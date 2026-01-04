@@ -17,8 +17,7 @@ extern "C"{
 	}
 
 	int puts(const char * str) {
-		int written = localFputs(str);
-		
+		return localFputs(str);
 	}
 
 	int printf(const char* format, ...)

@@ -85,8 +85,9 @@ int localvfprintf(FILE* buffer, const char* format, va_list args) {
 				written += localPrintString(buffer, strValue);
 				break;
 			case 'c':
-				fputc((char)va_arg(args, int), buffer);
-				written++;
+				//putc((char)va_arg(args, int), buffer);
+				written += localPrintString(buffer, (char[]){((char)va_arg(args, char)), 0});
+				//written++;
 				break;
 			case 'f':
 				floatToString((float)va_arg(args, float), numBuffer);
@@ -113,22 +114,24 @@ int localvfprintf(FILE* buffer, const char* format, va_list args) {
 				case 'p':
 				case 'x':
 				case 'X':
-					base = getBase(format[i + 1]);
+					base = getBase(format[++i]);
 					unsignedLongIntegerToString((unsigned long)va_arg(args, unsigned long), numBuffer, base);
 					written += printBase(base, buffer);
 					written += localPrintString(buffer, numBuffer);
-					i++;
+					//i++;
 					break;
 				default:
 					// Unsupported format specifier, just print it as is
-					fputc('%', buffer);
-					fputc('l', buffer);
-					written += 2;
+					//fputc('%', buffer);
+					//fputc('l', buffer);
+					//written += 2;
+					written += localPrintString(buffer, "%l");
 				}
 				break;
 			case '%':
-				fputc('%', buffer);
-				written++;
+				//fputc('%', buffer);
+				//written++;
+				written += localPrintString(buffer, "%");
 				break;
 			default:
 				// Unsupported format specifier, just print it as is

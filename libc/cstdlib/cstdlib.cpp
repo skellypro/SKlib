@@ -129,6 +129,8 @@ namespace skstdlib {
 					switch (str[i + 1]) {
 					case 'd':
 					case 'D':
+					case '8':
+					case '9':
 						base = 10;
 						break;
 					case 'b':
@@ -139,6 +141,7 @@ namespace skstdlib {
 					case 'X':
 						base = 16;
 						break;
+					case '0':
 					case '1':
 					case '2':
 					case '3':
