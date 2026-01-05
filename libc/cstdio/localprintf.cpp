@@ -118,26 +118,18 @@ int localvfprintf(FILE* buffer, const char* format, va_list args) {
 					unsignedLongIntegerToString((unsigned long)va_arg(args, unsigned long), numBuffer, base);
 					written += printBase(base, buffer);
 					written += localPrintString(buffer, numBuffer);
-					//i++;
 					break;
 				default:
 					// Unsupported format specifier, just print it as is
-					//fputc('%', buffer);
-					//fputc('l', buffer);
-					//written += 2;
 					written += localPrintString(buffer, "%l");
 				}
 				break;
 			case '%':
-				//fputc('%', buffer);
-				//written++;
 				written += localPrintString(buffer, "%");
 				break;
 			default:
 				// Unsupported format specifier, just print it as is
-				fputc('%', buffer);
-				fputc(format[i], buffer);
-				written += 2;
+				written += localPrintString(buffer, (char[]){'%', format[i], 0});
 				break;
 			}
 			break;
@@ -146,23 +138,19 @@ int localvfprintf(FILE* buffer, const char* format, va_list args) {
 			// TODO: handle more escape sequences
 			switch (format[i]) {
 			case 'n':
-				fputc('\n', buffer);
-				written++;
+				written += localPrintString(buffer, "\n");
 				break;
 			case 't':
-				fputc('\t', buffer);
-				written++;
+				written += localPrintString(buffer, "\t");
 				break;
 			case '\\':
 			default:
-				fputc(format[i], buffer);
-				written++;
+				written += localPrintString(buffer, (char[]){format[i], 0});
 				break;
 			}
 			break;
 		default:
-			fputc(format[i], buffer);
-			written++;
+			written += localPrintString(buffer, (char[]){format[i], 0});
 		}
 	}
 	return written;

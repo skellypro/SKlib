@@ -68,6 +68,7 @@ extern "C"{
 		return ret;
 	}
 
+	// STUB::TODO: Fill this in
     int vsnprintf(char * buffer, size_t sizeOfBuffer, const char * format, va_list args) {
         return 0;
     }
