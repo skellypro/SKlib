@@ -5,4 +5,4 @@
 
 int localFputs(const char *, FILE * = stdin);
 
-int localvfprintf(FILE *, const char *, va_list);
+int localvfprintf(FILE *, const char *, va_list *);

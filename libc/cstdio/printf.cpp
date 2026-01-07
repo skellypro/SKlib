@@ -24,7 +24,7 @@ extern "C"{
 	{
 		va_list args;
 		va_start(args, format);
-		int ret = localvfprintf(stdout, format, args);
+		int ret = localvfprintf(stdout, format, &args);
 		va_end(args);
 		return ret;
 	}
@@ -32,7 +32,7 @@ extern "C"{
 	int fprintf(FILE* buffer, const char* format, ...) {
 		va_list args;
 		va_start(args, format);
-		int ret = localvfprintf(buffer, format, args);
+		int ret = localvfprintf(buffer, format, &args);
 		va_end(args);
 		return ret;
 	}
@@ -54,26 +54,26 @@ extern "C"{
 		return ret;
 	}
 
-	int vprintf(const char* format, va_list args) {
-		return localvfprintf(stdout, format, args);
+	int vprintf(const char* format, va_list & args) {
+		return localvfprintf(stdout, format, &args);
 	}
 
-	int vsprintf(char* buffer, const char* format, va_list args) {
+	int vsprintf(char* buffer, const char* format, va_list & args) {
 		FILE temp;
 		temp._base = buffer;
         temp._ptr = buffer;
         temp._bufsiz = strlen(buffer);
         temp._flag = _READ;
-		int ret = localvfprintf(&temp, format, args);
+		int ret = localvfprintf(&temp, format, &args);
 		return ret;
 	}
 
 	// STUB::TODO: Fill this in
-    int vsnprintf(char * buffer, size_t sizeOfBuffer, const char * format, va_list args) {
+    int vsnprintf(char * buffer, size_t sizeOfBuffer, const char * format, va_list & args) {
         return 0;
     }
 
-	int vfprintf(FILE* buffer, const char* format, va_list args) {
-		return localvfprintf(buffer, format, args);
+	int vfprintf(FILE* buffer, const char* format, va_list & args) {
+		return localvfprintf(buffer, format, &args);
 	}
 }

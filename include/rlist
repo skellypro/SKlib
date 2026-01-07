@@ -1,10 +1,12 @@
 /*
- * skrchain.h
+ * skrlist.h
  *
  *  Created on: Jan 6, 2016
  *      Author: Sean
+ * 
+ * Description: A linked list, but with recursion... not a tree
  */
 
 #pragma once
 
-#include"src/containers/rlist.cpp"
+#include"collections/src/containers/rlist.cpp"

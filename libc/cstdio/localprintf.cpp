@@ -15,7 +15,7 @@ int localPrintString(FILE* buffer, const char* str) {
 		fputc(str[written], buffer);
 		written++;
 	}
-
+	
 	return written-1;
 }
 
@@ -46,11 +46,10 @@ int getBase(char formatc){
 }
 
 int localPuts(const char * str, FILE * buffer = stdin) {
-	int i = localPrintString(buffer, str);
-	return i ;
+	return localPrintString(buffer, str);
 }
 
-int localvfprintf(FILE* buffer, const char* format, va_list args) {
+int localvfprintf(FILE* buffer, const char* format, va_list * args) {
 	int base, written = 0;
 	char numBuffer[65];
 
@@ -63,59 +62,45 @@ int localvfprintf(FILE* buffer, const char* format, va_list args) {
 				// TODO: implement format width specifiers
 				// TODO: precision is implemented in the ToString function, get it to work here
 				// TODO: implement format length specifiers
-			case 'd':
-			case 'i':
-				integerToString((int)va_arg(args, int), numBuffer);
+			case 'd': case 'i':
+				integerToString((int)va_arg(*args, int), numBuffer);
 				written += localPrintString(buffer, numBuffer);
 				break;
-			case 'b':
-			case 'o':
-			case 'u':
-			case 'z':
-			case 'x':
-			case 'X':
-			case 'p':
+			case 'b': case 'o': case 'u': case 'z': case 'x': case 'X': case 'p':
 				base = getBase(format[i]);
-				unsignedIntegerToString((unsigned int)va_arg(args, unsigned int), numBuffer, base);
+				unsignedIntegerToString((unsigned int)va_arg(*args, unsigned int), numBuffer, base);
 				written += printBase(base, buffer);
 				written += localPrintString(buffer, numBuffer);
 				break;
 			case 's':
-				const char* strValue = (const char*)va_arg(args, const char*);
+				const char* strValue = (const char*)va_arg(*args, const char*);
 				written += localPrintString(buffer, strValue);
 				break;
 			case 'c':
 				//putc((char)va_arg(args, int), buffer);
-				written += localPrintString(buffer, (char[]){((char)va_arg(args, char)), 0});
+				written += localPrintString(buffer, (char[]){((char)va_arg(*args, char)), 0});
 				//written++;
 				break;
 			case 'f':
-				floatToString((float)va_arg(args, float), numBuffer);
+				floatToString((float)va_arg(*args, float), numBuffer);
 				written += localPrintString(buffer, numBuffer);
 				break;
 			case 'l':
 				// TODO: handle %ld, %li, %lu, %lx, %lo, etc.
 				switch (format[i + 1]) {
 				case 'f':
-					doubleToString((double)va_arg(args, double), numBuffer);
+					doubleToString((double)va_arg(*args, double), numBuffer);
 					written += localPrintString(buffer, numBuffer);
 					i++;
 					break;
-				case 'd':
-				case 'i':
-					longIntegerToString((long)va_arg(args, long), numBuffer);
+				case 'd': case 'i':
+					longIntegerToString((long)va_arg(*args, long), numBuffer);
 					written += localPrintString(buffer, numBuffer);
 					i++;
 					break;
-				case 'b':
-				case 'o':
-				case 'u':
-				case 'z':
-				case 'p':
-				case 'x':
-				case 'X':
+				case 'b': case 'o': case 'u': case 'z': case 'p': case 'x': case 'X':
 					base = getBase(format[++i]);
-					unsignedLongIntegerToString((unsigned long)va_arg(args, unsigned long), numBuffer, base);
+					unsignedLongIntegerToString((unsigned long)va_arg(*args, unsigned long), numBuffer, base);
 					written += printBase(base, buffer);
 					written += localPrintString(buffer, numBuffer);
 					break;

@@ -3,6 +3,7 @@
  *
  *  Created on: Jan 6, 2016
  *      Author: Sean
+ * Description: A binary search tree that uses loops instead of recursion
  */
 
 #pragma once
