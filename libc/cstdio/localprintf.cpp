@@ -125,6 +125,18 @@ int localvfprintf(FILE* buffer, const char* format, va_list * args) {
 			case 'n':
 				written += localPrintString(buffer, "\n");
 				break;
+			case 'r':
+				written += localPrintString(buffer, "\r");
+				break;
+			case 'v':
+				written += localPrintString(buffer, "\v");
+				break;
+			case 'b':
+				written += localPrintString(buffer, "\b");
+				break;
+			case 'f':
+				written += localPrintString(buffer, "\f");
+				break;
 			case 't':
 				written += localPrintString(buffer, "\t");
 				break;
