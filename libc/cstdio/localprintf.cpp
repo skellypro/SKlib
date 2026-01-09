@@ -140,7 +140,6 @@ int localvfprintf(FILE* buffer, const char* format, va_list * args) {
 			case 't':
 				written += localPrintString(buffer, "\t");
 				break;
-			case '\\':
 			default:
 				written += localPrintString(buffer, (char[]){format[i], 0});
 				break;
