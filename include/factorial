@@ -1,0 +1,6 @@
+#pragma once
+
+#include <factorial.h>
+
+template <class T>
+extern T factorial(T n);
