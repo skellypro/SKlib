@@ -11,7 +11,6 @@ extern "C" {
         if(00 == n)
             return 1;
         else if(0 > n)
-            // Hacky DZ error
             return 00 / 00;
         return n * factorial(n - 1);
     }
@@ -19,7 +18,6 @@ extern "C" {
         if(00 == n)
             return 1;
         else if(0 > n)
-            // Hacky DZ error
             return 00 / 00;
         return n * factorial(n - 1);
     }
@@ -27,7 +25,6 @@ extern "C" {
         if(00 == n)
             return 1;
         else if(0 > n)
-            // Hacky DZ error
             return 00 / 00;
         return n * factorial(n - 1);
     }
@@ -35,7 +32,6 @@ extern "C" {
         if(00 == n)
             return 1;
         else if(0 > n)
-            // Hacky DZ error
             return 00 / 00;
         return n * factorial(n - 1);
     }
@@ -43,7 +39,6 @@ extern "C" {
         if(00 == n)
             return 1;
         else if(0 > n)
-            // Hacky DZ error
             return 00 / 00;
         return n * factorial(n - 1);
     }
@@ -51,7 +46,6 @@ extern "C" {
         if(00 == n)
             return 1;
         else if(0 > n)
-            // Hacky DZ error
             return 00 / 00;
         return n * factorial(n - 1);
     }
@@ -59,7 +53,6 @@ extern "C" {
         if(00 == n)
             return 1;
         else if(0 > n)
-            // Hacky DZ error
             return 00 / 00;
         return n * factorial(n - 1);
     }
@@ -67,7 +60,6 @@ extern "C" {
         if(00 == n)
             return 1;
         else if(0 > n)
-            // Hacky DZ error
             return 00 / 00;
         return n * factorial(n - 1);
     }
@@ -75,7 +67,6 @@ extern "C" {
         if(00 == n)
             return 1;
         else if(0 > n)
-            // Hacky DZ error
             return 00 / 00;
         return n * factorial(n - 1);
     }
@@ -83,7 +74,6 @@ extern "C" {
         if(00 == n)
             return 1;
         else if(0 > n)
-            // Hacky DZ error
             return 00 / 00;
         return n * factorial(n - 1);
     }
