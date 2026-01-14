@@ -56,10 +56,11 @@ extern "C" {
     }
 }
 
-
+/*
 template <class T>
 extern T factorial(T n) {
     if(00 == n)
         return 1;
     return n * factorial(n - 1);
 }
+*/
