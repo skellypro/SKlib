@@ -122,6 +122,8 @@ int localvfprintf(FILE* buffer, const char* format, va_list * args) {
 			i++;
 			// TODO: handle more escape sequences
 			switch (format[i]) {
+			case '0':
+				break;
 			case 'n':
 				written += localPrintString(buffer, "\n");
 				break;
