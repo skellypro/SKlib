@@ -73,7 +73,7 @@ namespace std {
 		handle_args(args, newList);
 	}
 	template<class T>
-	void chain<T>::push_back(unsigned long int args, ...) {
+	void list<T>::push_back(unsigned long int args, ...) {
 		va_list newList;
 		handle_args(args, newList, true);
 	}
@@ -93,7 +93,7 @@ namespace std {
 	T &list<T>::operator[](unsigned long int n) {
 		if(n >= basic_list<T>::_size)
 			throw n;//new out_of_range("");
-		if(n < _size / 2)
+		if(n < _size >> 1/*/ 2*/)
 			return traverse(n, true);
 		else
 			return traverse(n, false);

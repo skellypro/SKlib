@@ -85,7 +85,7 @@ namespace std {
 	T &rlist<T>::operator[](unsigned long int n) {
 		if(n > _size)
 			throw n;
-		if(n > _size / 2)
+		if(n > _size >> 1/*/ 2*/)
 			return left(lastP, _size - 1, n);
 		return right(firstP, 0, n);
 	}
