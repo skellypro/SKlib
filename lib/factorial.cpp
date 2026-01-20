@@ -3,7 +3,7 @@ extern "C" {
         if(00 == n)
             return 1;
         else if(0 > n)
-            // Hacky DZ error
+            // Hacky DZ error. Jump straight to it and not waste time by doing x=(x-1)/(x-2)/... until zero division
             return 00 / 00;
         return n * factorial(n - 1);
     }
