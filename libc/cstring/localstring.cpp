@@ -3,11 +3,11 @@
 
 #include <localstring.h>
 
-const static char digits[] = "0123456789ABCDEF";
+const static char DIGITS[] = "0123456789ABCDEF";
 
 // TODO: make these functions part of a utility library
 int integerToString(int value, char* buffer, int base = 10) {
-	return longIntegerToString(value, buffer, base);
+	return static_cast<int>(longIntegerToString(value, buffer, base));
 }
 int unsignedIntegerToString(unsigned int value, char* buffer, int base = 10) {
 	return unsignedLongIntegerToString(value, buffer, base);
@@ -27,7 +27,7 @@ int longIntegerToString(long value, char* buffer, int base = 10) {
 	}
 	while (value != 0) {
 		int rem = value % base;
-		temp[i++] = digits[rem];
+		temp[i++] = DIGITS[rem];
 		value /= base;
 	}
 	if (isNegative) {
@@ -50,7 +50,7 @@ int unsignedLongIntegerToString(unsigned long value, char* buffer, int base = 10
 	}
 	while (value != 0) {
 		int rem = value % base;
-		temp[i++] = digits[rem];
+		temp[i++] = DIGITS[rem];
 		value /= base;
 	}
 	int j = 0;
@@ -61,10 +61,9 @@ int unsignedLongIntegerToString(unsigned long value, char* buffer, int base = 10
 	return j;
 }
 int floatToString(float value, char* buffer, int precision = 6) {
-	return doubleToString(value, buffer, precision);
+	return static_cast<float>(doubleToString(value, buffer, precision));
 }
-int doubleToString(double value, char* buffer, int precision = 12) {
-	if (precision < 0) precision = 12; // Default precision
+int doubleToString(double value, char* buffer, int precision = 6) {
 	int intPart = (int)value;
 	double fracPart = value - (double)intPart;
 	int len = integerToString(intPart, buffer, 10);
@@ -73,7 +72,7 @@ int doubleToString(double value, char* buffer, int precision = 12) {
 	for (int i = 0; i < precision; i++) {
 		fracPart *= 10.0;
 		int digit = (int)fracPart;
-		*buffer++ = '0' + digit;
+		*buffer++ = DIGITS[digit];
 		fracPart -= (double)digit;
 	}
 	*buffer = '\0';
