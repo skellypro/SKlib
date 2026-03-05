@@ -8,8 +8,11 @@
 #include <stdarg.h>
 #include <string.h>
 
-#include <localprintf.h>
+#include "localprintf.h"
 #include <iobuf.h>
+
+using sk::skprintf::localFputs();
+using sk::skprintf::localvfprintf();
 
 extern "C"{
 	int fputs(const char * str, FILE * stream) {

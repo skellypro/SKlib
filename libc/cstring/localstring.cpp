@@ -1,7 +1,7 @@
 
 #include <cstring>
 
-#include <localstring.h>
+#include "localstring.h"
 
 const static char DIGITS[] = "0123456789ABCDEF";
 
