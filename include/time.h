@@ -18,7 +18,7 @@ typedef struct _tm_ {
 		tm_year,	//years since 1900
 		tm_wday,	//day of week[0, 6](Sunday = 0)
 		tm_yday,	//day of year[0, 365]
-		tm_isdst,	//daylight savings flag
+		tm_isdst;	//daylight savings flag
 } tm;
 
 typedef struct {
