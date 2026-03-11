@@ -25,3 +25,5 @@ typedef int64_t * int64ptr_t;
 typedef uint64_t * uint64ptr_t;
 typedef intmax_t * intmaxptr_t;
 typedef uintmax_t * uintmaxptr_t;
+
+typedef int(64) int84_t;
