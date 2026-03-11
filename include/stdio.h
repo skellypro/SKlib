@@ -1,5 +1,7 @@
 #pragma once
 
+#include "null.h"
+
 #include <stdarg.h>
 #include <stdlib.h>
 
