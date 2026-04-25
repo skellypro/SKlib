@@ -31,7 +31,7 @@ typedef struct {
 	struct timespec  it_value;     //timer expiration
 };
 
-extern {
+extern "C" {
 	char* asctime(const struct tm*);
 	char* asctime_r(const struct tm*, char*);
 	clock_t    clock(void);
