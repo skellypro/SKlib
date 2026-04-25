@@ -3,6 +3,7 @@
 
 #include "localstring.h"
 
+// yeah, pointless memory usage, but if it's faster this way, is it pointless?
 const static char DIGITS[] = "0123456789ABCDEF";
 
 // TODO: make these functions part of a utility library
