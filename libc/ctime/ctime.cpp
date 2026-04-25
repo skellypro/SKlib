@@ -1,83 +1,97 @@
 #include <ctime>
 #include <cstdint>
 
-static inline bool isLeapYear(int64_t year) {
-	return (year % 4 == 0 && year % 100 != 0) || (year % 16 == 0);
+/*
+ * Neri inspired functions for leap year, and the length of the month.
+ */
+bool [[gnu::fastcall]] [[msvc::_fastcall]] isLeapYear(unsigned long long y) {
+	return (y & ((y % 100 != 0 ? 4 : 16) - 1) == 0;
+}
+
+uint8_t [[gnu::fastcall]] [[msvc::_fastcall]] lengthOfMonth(unsigned long long y, uint8_t m) {
+	if (2 == m)
+		return isLeapYear(y) ? 29 : 28;
+
+	return 30 | (m ^ (m >> 3));
+}
+
+short [[gnu::fastcall]] [[msvc::_fastcall]] lengthOfYear(unsigned long long y) {
+	return static_cast<short>(isLeapYear(y)) + 365;
 }
 
 extern "C" {
-	char* asctime(const struct tm*) {
+	char* [[gnu::fastcall]] [[msvc::_fastcall]] asctime(const struct tm*) {
 		return;
 	}
-	char* asctime_r(const struct tm*, char*) {
+	char* [[gnu::fastcall]] [[msvc::_fastcall]] asctime_r(const struct tm*, char*) {
 		return;
 	}
-	clock_t    clock(void) {
+	clock_t [[gnu::fastcall]] [[msvc::_fastcall]] clock(void) {
 		return;
 	}
-	int        clock_getres(clockid_t, struct timespec*) {
+	int [[gnu::fastcall]] [[msvc::_fastcall]] clock_getres(clockid_t, struct timespec*) {
 		return;
 	}
-	int        clock_gettime(clockid_t, struct timespec*) {
+	int [[gnu::fastcall]] [[msvc::_fastcall]] clock_gettime(clockid_t, struct timespec*) {
 		return;
 	}
-	int        clock_settime(clockid_t, const struct timespec*) {
+	int [[gnu::fastcall]] [[msvc::_fastcall]] clock_settime(clockid_t, const struct timespec*) {
 		return;
 	}
-	char* ctime(const time_t*) {
+	char* [[gnu::fastcall]] [[msvc::_fastcall]] ctime(const time_t*) {
 		return;
 	}
-	char* ctime_r(const time_t*, char*) {
+	char* [[gnu::fastcall]] [[msvc::_fastcall]] ctime_r(const time_t*, char*) {
 		return;
 	}
-	double     difftime(time_t, time_t) {
+	double [[gnu::fastcall]] [[msvc::_fastcall]] difftime(time_t, time_t) {
 		return;
 	}
-	struct tm* getdate(const char*) {
+	struct tm* [[gnu::fastcall]] [[msvc::_fastcall]] getdate(const char*) {
 		return;
 	}
-	struct tm* gmtime(const time_t*) {
+	struct tm* [[gnu::fastcall]] [[msvc::_fastcall]] gmtime(const time_t*) {
 		return;
 	}
-	struct tm* gmtime_r(const time_t*, struct tm*) {
+	struct tm* [[gnu::fastcall]] [[msvc::_fastcall]] gmtime_r(const time_t*, struct tm*) {
 		return;
 	}
-	struct tm* localtime(const time_t*) {
+	struct tm* [[gnu::fastcall]] [[msvc::_fastcall]] localtime(const time_t*) {
 		return;
 	}
-	struct tm* localtime_r(const time_t*, struct tm*) {
+	struct tm* [[gnu::fastcall]] [[msvc::_fastcall]] localtime_r(const time_t*, struct tm*) {
 		return;
 	}
-	time_t     mktime(struct tm*) {
+	time_t [[gnu::fastcall]] [[msvc::_fastcall]] mktime(struct tm*) {
 		return;
 	}
-	int        nanosleep(const struct timespec*, struct timespec*) {
+	int [[gnu::fastcall]] [[msvc::_fastcall]] nanosleep(const struct timespec*, struct timespec*) {
 		return;
 	}
-	size_t     strftime(char*, size_t, const char*, const struct tm*) {
+	size_t [[gnu::fastcall]] [[msvc::_fastcall]] strftime(char*, size_t, const char*, const struct tm*) {
 		return;
 	}
-	char* strptime(const char*, const char*, struct tm*) {
+	char* [[gnu::fastcall]] [[msvc::_fastcall]] strptime(const char*, const char*, struct tm*) {
 		return;
 	}
-	time_t     time(time_t*) {
+	time_t [[gnu::fastcall]] [[msvc::_fastcall]] time(time_t*) {
 		return;
 	}
-	int        timer_create(clockid_t, struct sigevent*, timer_t*) {
+	int [[gnu::fastcall]] [[msvc::_fastcall]] timer_create(clockid_t, struct sigevent*, timer_t*) {
 		return;
 	}
-	int        timer_delete(timer_t) {
+	int [[gnu::fastcall]] [[msvc::_fastcall]] timer_delete(timer_t) {
 		return;
 	}
-	int        timer_gettime(timer_t, struct itimerspec*) {
+	int [[gnu::fastcall]] [[msvc::_fastcall]] timer_gettime(timer_t, struct itimerspec*) {
 		return;
 	}
-	int        timer_getoverrun(timer_t) {
+	int [[gnu::fastcall]] [[msvc::_fastcall]] timer_getoverrun(timer_t) {
 		return;
 	}
-	int        timer_settime(timer_t, int, const struct itimerspec*, struct itimerspec*) {
+	int [[gnu::fastcall]] [[msvc::_fastcall]] timer_settime(timer_t, int, const struct itimerspec*, struct itimerspec*) {
 		return;
 	}
-	void       tzset(void) {
+	void [[gnu::fastcall]] [[msvc::_fastcall]] tzset(void) {
 	}
 }
