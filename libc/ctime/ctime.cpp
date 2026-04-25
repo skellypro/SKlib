@@ -2,7 +2,11 @@
 #include <cstdint>
 
 static inline bool isLeapYear(int64_t year) {
+<<<<<<< HEAD
 	return (year % 4 == 0 && year % 100 != 0) || (year % 16 == 0);
+=======
+	return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+>>>>>>> a65be0df48cbcaf6b5c387439453ea9768252039
 }
 
 extern "C" {
