@@ -1,6 +1,11 @@
 #include <ctime>
+#include <cstdint>
 
-extern {
+static inline bool isLeapYear(int64_t year) {
+	return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+}
+
+extern "C" {
 	char* asctime(const struct tm*) {
 		return;
 	}
@@ -73,5 +78,6 @@ extern {
 	int        timer_settime(timer_t, int, const struct itimerspec*, struct itimerspec*) {
 		return;
 	}
-	void       tzset(void) {}
+	void       tzset(void) {
+	}
 }
