@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <cstring>
 
-#include "../string/localstring.h"
+#include "../cstring/localstring.h"
 #include "localprintf.h"
 #include <iobuf.h>
 
@@ -55,7 +55,6 @@ namespace sk {
 			int base, written = 0;
 			char numBuffer[65];
 
-			// TODO: control based on _iobuf flags.
 			if (buffer->_flag & _IOWRT)
 				for (size_t i = 0; format[i]; i++) {
 					switch (format[i]) {
