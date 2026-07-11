@@ -66,44 +66,42 @@ namespace sk {
 							// TODO: precision is implemented in the ToString function, get it to work here
 							// TODO: implement format length specifiers
 						case 'd': case 'i':
-							integerToString((int)va_arg(*args, int), numBuffer);
+							integerToString(static_cast<int>(va_arg(*args, int)), numBuffer);
 							written += localPrintString(buffer, numBuffer);
 							break;
 						case 'b': case 'o': case 'u': case 'z': case 'x': case 'X': case 'p':
 							base = getBase(format[i]);
-							unsignedIntegerToString((unsigned int)va_arg(*args, unsigned int), numBuffer, base);
+							unsignedIntegerToString(static_cast<unsigned int>(va_arg(*args, unsigned int)), numBuffer, base);
 							written += printBase(base, buffer);
 							written += localPrintString(buffer, numBuffer);
 							break;
 						case 's':
-							const char* strValue = (const char*)va_arg(*args, const char*);
+							const char* strValue = reinterpret_cast<const char*>(va_arg(*args, const char*));
 							written += localPrintString(buffer, strValue);
 							break;
 						case 'c':
-							//putc((char)va_arg(args, int), buffer);
-							written += localPrintString(buffer, (char[]) { ((char)va_arg(*args, char)), 0 });
-							//written++;
+							written += localPrintString(buffer, {static_cast<char>(va_arg(*args, char), 0}));
 							break;
 						case 'f':
-							floatToString((float)va_arg(*args, float), numBuffer);
+							floatToString(static_cast<float>(va_arg(*args, float)), numBuffer);
 							written += localPrintString(buffer, numBuffer);
 							break;
 						case 'l':
 							// TODO: handle %ld, %li, %lu, %lx, %lo, etc.
 							switch (format[i + 1]) {
 							case 'f':
-								doubleToString((double)va_arg(*args, double), numBuffer);
+								doubleToString(static_cast<double>(va_arg(*args, double)), numBuffer);
 								written += localPrintString(buffer, numBuffer);
 								i++;
 								break;
 							case 'd': case 'i':
-								longIntegerToString((long)va_arg(*args, long), numBuffer);
+								longIntegerToString(static_cast<long>(va_arg(*args, long)), numBuffer);
 								written += localPrintString(buffer, numBuffer);
 								i++;
 								break;
 							case 'b': case 'o': case 'u': case 'z': case 'p': case 'x': case 'X':
 								base = getBase(format[++i]);
-								unsignedLongIntegerToString((unsigned long)va_arg(*args, unsigned long), numBuffer, base);
+								unsignedLongIntegerToString(static_cast<unsigned long>(va_arg(*args, unsigned long)>, numBuffer, base);
 								written += printBase(base, buffer);
 								written += localPrintString(buffer, numBuffer);
 								break;
@@ -117,7 +115,7 @@ namespace sk {
 							break;
 						default:
 							// Unsupported format specifier, just print it as is
-							written += localPrintString(buffer, (char[]) { '%', format[i], 0 });
+							written += localPrintString(buffer, {'%', format[i], 0 });
 							break;
 						}
 						break;
@@ -146,12 +144,12 @@ namespace sk {
 							written += localPrintString(buffer, "\t");
 							break;
 						default:
-							written += localPrintString(buffer, (char[]) { format[i], 0 });
+							written += localPrintString(buffer, { format[i], 0 });
 							break;
 						}
 						break;
 					default:
-						written += localPrintString(buffer, (char[]) { format[i], 0 });
+						written += localPrintString(buffer, { format[i], 0 });
 					}
 				}
 			return written;
