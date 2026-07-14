@@ -1,0 +1,25 @@
+/*
+ * algorithm
+ *
+ *  Created on: Jul 12, 2026
+ *      Author: sean
+ *
+ * Description:	Standard Template library: Algorithms
+ */
+#pragma once
+
+#include <iterator>
+
+namespace std {
+	template <class InputIterator, class UnaryPredicate>
+	bool all_of(InputIterator first, InputIterator last, UnaryPredicate pred);
+
+	template <class InputIterator, class UnaryPredicate>
+	bool any_of(InputIterator first, InputIterator last, UnaryPredicate pred);
+
+	template <class InputIterator, class UnaryPredicate> 
+	bool none_of(InputIterator first, InputIterator last, UnaryPredicate pred);
+
+	template <class InputIterator, class Function>
+	Function for_each(InputIterator first, InputIterator last, Function fn);
+}

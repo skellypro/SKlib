@@ -20,6 +20,7 @@ short [[gnu::fastcall]] [[msvc::_fastcall]] lengthOfYear(unsigned long long y) {
 }
 
 extern "C" {
+	/* These are obviously not ready yet.
 	char* [[gnu::fastcall]] [[msvc::_fastcall]] asctime(const struct tm*) {
 		return;
 	}
@@ -94,4 +95,5 @@ extern "C" {
 	}
 	void [[gnu::fastcall]] [[msvc::_fastcall]] tzset(void) {
 	}
+	*/
 }
